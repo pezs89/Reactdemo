@@ -150,9 +150,10 @@ class App extends React.Component {
         this.deletePerson = this.deletePerson.bind(this);
     }
 
-    onNameChange(event, index) {
+    onNameChange(event, id) {
         const newPersons = [...this.state.persons];
-        newPersons[index].name = event.target.value;
+        const modifiedPersonIndex = newPersons.findIndex(p => p.id === id);
+        newPersons[modifiedPersonIndex].name = event.target.value;
         this.setState({
             persons: newPersons
         });
