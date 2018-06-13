@@ -1,0 +1,61 @@
+.person-card {
+    width: 60%;
+    height: 80px;
+    margin: 10px auto;
+    display: flex;
+    align-items: flex-start;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+
+    & > div {
+        height: 100%;
+
+        &:first-child, &:last-child {
+            width: 80px;
+        }
+    }
+
+    .person-image {
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+    }
+
+    .person-info {
+        display: flex;
+        flex-flow: column;
+        width: calc(100% - 138px);
+        padding: 0 4px;
+
+        &__name {
+            height: 16px;
+            margin: 4px 0 4px 0;
+            font-weight: 400;
+            font-size: 15px;
+        }
+
+        &__about {
+            height: calc(100% - 24px);
+            margin: 0 0 4px 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            text-align: justify;
+        }
+    }
+
+    .person-actions {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        i {
+            padding: 0 10px;
+            font-size: 20px;
+            color: 	#DC143C;
+            cursor: pointer;
+            &:first-child {
+                color: rgb(255, 165, 0);
+            }
+        }
+    }
+}

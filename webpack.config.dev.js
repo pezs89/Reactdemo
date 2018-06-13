@@ -35,6 +35,14 @@ const config = {
                         'css-loader', 'sass-loader'
                     ]
                 })
+            },
+            {
+                test: /\.(eot|ttf|woff2?|otf|svg|png|jpg)$/,
+                use: 'file-loader?name=./[name].[ext]'
+            },
+            {
+                test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+                use: 'url-loader?limit=10000&mimetype=application/font-woff'
             }
         ]
     },
