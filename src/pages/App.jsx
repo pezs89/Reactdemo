@@ -2,6 +2,7 @@ import React from 'react';
 import Person from '../components/Person';
 import '../../assets/scss/main.scss';
 import 'font-awesome-sass-loader';
+import PersonList from '../components/PersonList';
 
 class App extends React.Component {
     constructor(props) {
@@ -167,11 +168,7 @@ class App extends React.Component {
     render() {
         return (
             <div>
-                {
-                    this.state.persons.map(person =>
-                        <Person person={person} key={person.id} onValueChange={this.onNameChange} deletePerson={this.deletePerson} />
-                    )
-                }
+                <PersonList persons={this.state.persons} onNameChange={this.onNameChange} deletePerson={this.deletePerson} />
             </div>
         )
     }

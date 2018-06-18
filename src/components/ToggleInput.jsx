@@ -4,7 +4,7 @@ const ToggleInput = (props) => {
     const { id, name, isInEditMode, onValueChange, setEditMode, setRef } = props;
     return (
         !isInEditMode ?
-            <span>{name}</span>
+            <div>{name}</div>
             :
             <input type="text"
                 ref={(input) => { setRef(input); }}

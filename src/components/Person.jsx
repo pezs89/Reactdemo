@@ -1,5 +1,6 @@
 import React from 'react';
 import ToggleInput from './ToggleInput';
+import Icon from './Icon';
 
 class Person extends React.Component {
     constructor(props) {
@@ -70,8 +71,8 @@ class Person extends React.Component {
                     </div>
                 </div>
                 <div className="person-actions">
-                    <i className="fa fa-cog" />
-                    <i className="fa fa-trash" onClick={() => deletePerson(person.id)} />
+                    <Icon iconClass={'fa fa-cog orange'} />
+                    <Icon iconClass={'fa fa-trash'} iconActionHandler={deletePerson} id={person.id} />
                 </div>
             </div>
         )
