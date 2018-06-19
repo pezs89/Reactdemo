@@ -3,6 +3,7 @@ import Person from '../components/Person';
 import '../../assets/scss/main.scss';
 import 'font-awesome-sass-loader';
 import PersonList from '../components/PersonList';
+import ListToggle from '../components/ListToggle';
 
 class App extends React.Component {
     constructor(props) {
@@ -144,11 +145,13 @@ class App extends React.Component {
                     "greeting": "Hello, Erin Bell! You have 10 unread messages.",
                     "favoriteFruit": "apple"
                 }
-            ]
+            ],
+            isListVisible: true
         }
 
         this.onNameChange = this.onNameChange.bind(this);
         this.deletePerson = this.deletePerson.bind(this);
+        this.onListCollapseCallback = this.onListCollapseCallback.bind(this);
     }
 
     onNameChange(event, id) {
@@ -165,10 +168,20 @@ class App extends React.Component {
         this.setState({ persons: persons.filter(person => person.id !== id) });
     }
 
+    onListCollapseCallback() {
+        this.setState({ isListVisible: !this.state.isListVisible })
+    }
+
     render() {
         return (
             <div>
-                <PersonList persons={this.state.persons} onNameChange={this.onNameChange} deletePerson={this.deletePerson} />
+                <ListToggle title={'Persons'} onListCollapse={this.onListCollapseCallback} />
+                {this.state.isListVisible ?
+                
+                    <PersonList persons={this.state.persons} onNameChange={this.onNameChange} deletePerson={this.deletePerson} />
+                    :
+                    null
+                }
             </div>
         )
     }

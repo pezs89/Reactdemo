@@ -9,7 +9,6 @@ class Person extends React.Component {
             isInEditMode: false
         }
 
-        this.clickOutSide = this.clickOutSide.bind(this);
         this.setEditMode = this.setEditMode.bind(this);
         this.setRef = this.setRef.bind(this);
     }
@@ -21,7 +20,7 @@ class Person extends React.Component {
     }
 
     componentDidMount() {
-        document.addEventListener('mousedown', this.clickOutSide);
+        document.addEventListener('mousedown', () => this.clickOutSide, false);
     }
 
     componentDidUpdate() {
@@ -31,7 +30,7 @@ class Person extends React.Component {
     }
 
     componentWillUnMount() {
-        document.removeEventListener('mousedown', this.clickOutSide);
+        document.removeEventListener('mousedown', () => this.clickOutSide, false);
     }
 
     clickOutSide(event) {

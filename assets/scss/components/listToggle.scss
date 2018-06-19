@@ -1,0 +1,30 @@
+.list-toggle {
+    width: 70%;
+    height: 40px;
+    margin: 10px auto;
+    background-color: rgba(203, 242, 243, .1);
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+    display: flex;
+
+    >div{
+        height: 100%;
+        display: flex;
+        align-items: center;
+        padding: 0 15px;
+        color: white;
+    }
+
+    &__title {
+        width: calc(100% - 20px);
+        font-size: 16px;
+    }
+    &__icon {
+        width: 20px;
+        transition: .2s ease-in-out;
+        
+        &--rotate {
+            transition: .2s ease-in-out;
+            transform: rotate(180deg);
+        }
+    }
+}
