@@ -1,6 +1,7 @@
 import React from 'react';
 import ToggleInput from './ToggleInput';
 import Icon from './Icon';
+import PropTypes from "prop-types";
 
 class Person extends React.Component {
     constructor(props) {
@@ -8,9 +9,8 @@ class Person extends React.Component {
         this.state = {
             isInEditMode: false
         }
-
+        this.refInput = React.createRef();
         this.setEditMode = this.setEditMode.bind(this);
-        this.setRef = this.setRef.bind(this);
     }
 
     setEditMode(event) {
@@ -25,7 +25,7 @@ class Person extends React.Component {
 
     componentDidUpdate() {
         if (this.state.isInEditMode) {
-            this.nameInput.focus();
+            this.refInput.current.focus();
         }
     }
 
@@ -43,12 +43,6 @@ class Person extends React.Component {
         }
     }
 
-    setRef(input) {
-        if (input) {
-            this.nameInput = input;
-        }
-    }
-
     render() {
         const { person, deletePerson, onValueChange } = this.props;
 
@@ -61,7 +55,7 @@ class Person extends React.Component {
                             name={person.name}
                             id={person.id}
                             isInEditMode={this.state.isInEditMode}
-                            setRef={this.setRef}
+                            inputRef={this.refInput}
                             onValueChange={onValueChange}
                             setEditMode={this.setEditMode} />
                     </div>
@@ -76,6 +70,15 @@ class Person extends React.Component {
             </div>
         )
     }
+}
+
+Person.propTypes = {
+    deletePerson: PropTypes.func.isRequired,
+    onValueChange: PropTypes.func.isRequired,
+    person: PropTypes.shape({
+        name: PropTypes.string,
+        id: PropTypes.string
+    })
 }
 
 export default Person;
